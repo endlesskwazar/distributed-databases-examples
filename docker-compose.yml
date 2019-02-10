@@ -1,0 +1,21 @@
+version: '2'
+services:
+  mongo:
+    command: mongod
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      
+  web:
+    build:
+      context: ./web
+      dockerfile: Dockerfile.dev
+    volumes:
+      - "./web/src:/web/src"
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mongo
+

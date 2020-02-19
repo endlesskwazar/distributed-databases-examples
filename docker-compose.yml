@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  nginx-serve-static:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    image: nginx-serve-static
+    ports:
+      - 80:80
